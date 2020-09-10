@@ -7,13 +7,15 @@ import java.util.List;
 
 public class PrimeFinder{
         
+	private static List<PrimeThread> primes;
 	public static void findPrimesN(int a, int b, PrimesResultSet prs, int hilos) {
 		//	  BigInteger a=_a;
         //  BigInteger b=_b;
 		int total = b-a;
 		int count = total/hilos;
 		int mod = total%hilos;
-		List<PrimeThread> primes = new LinkedList<>();
+		//List<PrimeThread> primes = new LinkedList<>();
+		primes = new LinkedList<>();
 		for(int i = 0; i < hilos;i++){
 			if(i == hilos-1) {
 				//PrimeThread hilo = new PrimeThread(BigInteger.valueOf((i*count)),BigInteger.valueOf((i*count)+mod),prs);
@@ -34,6 +36,9 @@ public class PrimeFinder{
 				e.printStackTrace();
 			}
 		}
+	}
+	public static List<PrimeThread> getPrimes() {
+		return primes;
 	}
         
 	/*public static void findPrimes(BigInteger _a, BigInteger _b, PrimesResultSet prs){
