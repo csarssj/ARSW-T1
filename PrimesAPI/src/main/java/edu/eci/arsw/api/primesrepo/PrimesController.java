@@ -4,6 +4,8 @@ import edu.eci.arsw.api.primesrepo.model.FoundPrime;
 import edu.eci.arsw.api.primesrepo.service.PrimeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,21 +29,25 @@ public class PrimesController
 
 
     @RequestMapping( value = "/primes", method = GET )
-    public List<FoundPrime> getPrimes()
+    public ResponseEntity<?>  getPrimes()
     {
-        return primeService.getFoundPrimes();
+    	List<FoundPrime> primes = null;
+    	primes = primeService.getFoundPrimes();
+    	return new ResponseEntity<>(primes, HttpStatus.ACCEPTED);
     }
     
     @RequestMapping( value = "/primes/{primenumber}", method = GET )
-    public FoundPrime getPrime(@PathVariable String primenumber)
+    public ResponseEntity<?> getPrime(@PathVariable String primenumber)
     {
-        return primeService.getPrime(primenumber);
+    	FoundPrime prime = primeService.getPrime(primenumber);
+    	return new ResponseEntity<>(prime,HttpStatus.ACCEPTED);
     }
     
     @RequestMapping( value = "/primes", method = POST )
-    public void getPrime(@RequestBody FoundPrime prime)
+    public ResponseEntity<?> getPrime(@RequestBody FoundPrime prime)
     {
         primeService.addFoundPrime(prime);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     //TODO implement additional methods provided by PrimeService
 
