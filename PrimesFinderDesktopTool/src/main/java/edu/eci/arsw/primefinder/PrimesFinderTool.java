@@ -20,7 +20,7 @@ public class PrimesFinderTool {
             
             PrimesResultSet prs=new PrimesResultSet("john");
             
-            PrimeFinder.findPrimesN(1, 100, prs,4);
+            PrimeFinder.findPrimesN(1, 1000, prs,4);
             //PrimeFinder.findPrimes(new BigInteger("1"), new BigInteger("100"), prs);
             
      

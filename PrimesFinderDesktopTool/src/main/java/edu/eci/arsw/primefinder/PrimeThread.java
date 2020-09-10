@@ -42,7 +42,7 @@ public class PrimeThread extends Thread {
             
             	i=i.add(BigInteger.ONE);
         	}
-        	System.out.println("PrimeThread:" + prs.getPrimes());
+        	//System.out.println("PrimeThread:" + prs.getPrimes());
         	end = true;
         }
 	}
