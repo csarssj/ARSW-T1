@@ -8,8 +8,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Santiago Carrillo
- * 2/22/18.
+ * @version 2.0
+ * @author Ceseg
+ * 10/09/20.
+ * 
  */
 @Service
 public class PrimeServiceStub implements PrimeService
@@ -29,7 +31,16 @@ public class PrimeServiceStub implements PrimeService
     @Override
     public void addFoundPrime( FoundPrime foundPrime )
     {
-        //TODO
+        boolean existe = false;
+    	for(FoundPrime p:primes) {
+        	if(p.equals(foundPrime)) {
+        		existe = true;
+        	}
+        }
+    	if(!existe) {
+    		primes.add(foundPrime);
+    	}
+        
     }
 
     @Override

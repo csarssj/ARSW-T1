@@ -5,16 +5,19 @@ import edu.eci.arsw.api.primesrepo.service.PrimeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 /**
- * @author Santiago Carrillo
- * 2/22/18.
+ * @version 2.0
+ * @author Ceseg
+ * 10/09/20.
+ * 
  */
 @RestController
 public class PrimesController
@@ -34,7 +37,12 @@ public class PrimesController
     {
         return primeService.getPrime(primenumber);
     }
-
+    
+    @RequestMapping( value = "/primes", method = POST )
+    public void getPrime(@RequestBody FoundPrime prime)
+    {
+        primeService.addFoundPrime(prime);
+    }
     //TODO implement additional methods provided by PrimeService
 
 
