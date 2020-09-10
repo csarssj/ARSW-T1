@@ -4,6 +4,7 @@ import edu.eci.arsw.api.primesrepo.model.FoundPrime;
 import edu.eci.arsw.api.primesrepo.service.PrimeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,12 @@ public class PrimesController
     {
         return primeService.getFoundPrimes();
     }
-
+    
+    @RequestMapping( value = "/primes/{primenumber}", method = GET )
+    public FoundPrime getPrime(@PathVariable String primenumber)
+    {
+        return primeService.getPrime(primenumber);
+    }
 
     //TODO implement additional methods provided by PrimeService
 

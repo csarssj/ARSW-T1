@@ -42,7 +42,11 @@ public class PrimeServiceStub implements PrimeService
     @Override
     public FoundPrime getPrime( String prime )
     {
-        //TODO
+        for(FoundPrime p:primes) {
+        	if(p.getPrime().equalsIgnoreCase(prime)) {
+        		return p;
+        	}
+        }
         return null;
     }
 }
